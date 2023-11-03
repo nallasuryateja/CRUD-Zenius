@@ -3,7 +3,11 @@ import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 import axios from 'axios'
 
+import { useNavigate } from 'react-router-dom'
+
 const Create = () =>{
+
+    let navigate = useNavigate()
 
     const [firstName,setFirstName] = useState("")
     const [lastName,setLastName]  = useState("")
@@ -12,9 +16,10 @@ const Create = () =>{
     const postData = () =>{
         
         axios.post(`https://6543673801b5e279de204c58.mockapi.io/fakeData`,{firstName,lastName,checked})
-        console.log(firstName)
-        console.log(lastName)
-        console.log(checked)
+        .then(()=>{
+            alert("Data Posted")
+            navigate("/read")
+        })
     }
 
     return (

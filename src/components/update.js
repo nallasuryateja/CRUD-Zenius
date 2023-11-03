@@ -4,7 +4,11 @@ import { useEffect } from 'react'
 
 import axios from 'axios'
 
+import { useNavigate } from 'react-router-dom'
+
 const Update = () =>{
+    let navigate = useNavigate()
+
     const [id, setID] = useState(null);
     const [firstName,setFirstName] = useState("")
     const [lastName,setLastName]  = useState("")
@@ -20,6 +24,7 @@ const Update = () =>{
 const updateData = () =>{
     axios.put(`https://6543673801b5e279de204c58.mockapi.io/fakeData/${id}`,{firstName,lastName,checked})
     alert("updated data successfully")
+    navigate("/read")
     
 }
 
